@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mongo-data-base:
+    image: mongo
+    container_name: the-mongo-db
+    expose:
+      - "27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
+      interval: 5s
+      timeout: 2s
+      retries: 5 
+    networks:
+      - customer-app-network     
+  customer-app:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=80
+    links:
+      - mongo-data-base
+    networks:
+      - customer-app-network
+networks:
+  customer-app-network:
+   
