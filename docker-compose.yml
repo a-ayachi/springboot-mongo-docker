@@ -3,8 +3,8 @@ services:
   mongo-data-base:
     image: mongo
     container_name: the-mongo-db
-    expose:
-      - "27017"
+    ports:
+      - "27017:27017"
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet 1
       interval: 5s

@@ -155,11 +155,10 @@
 						<configuration>
 							<executable>docker-compose</executable>
 							<workingDirectory>${project.basedir}</workingDirectory>
-							<arguments>
-								<argument>-f</argument>
-								<argument>docker-integration.yml</argument>
+							<arguments>								
 								<argument>up</argument>
 								<argument>-d</argument>
+								<argument>mongo-data-base</argument>
 							</arguments>
 						</configuration>
 					</execution>
@@ -172,9 +171,7 @@
 						<configuration>
 							<executable>docker-compose</executable>
 							<workingDirectory>${project.basedir}</workingDirectory>
-							<arguments>
-								<argument>-f</argument>
-								<argument>docker-integration.yml</argument>
+							<arguments>								
 								<argument>down</argument>
 							</arguments>
 						</configuration>
